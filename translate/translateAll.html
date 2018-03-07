@@ -1,0 +1,511 @@
+<!DOCTYPE html lang="en">
+
+<head> 
+
+  <title>Translate</title>
+<style>
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://source.unsplash.com/mNWsZDYUCFs/1500x1000');
+    background-size: cover;
+}
+
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #ffffff;
+}
+
+.button {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background-color: transparent;
+  border: 1px solid blue;
+}
+
+.thumbnail {
+  padding: 4px;
+  line-height: 1.42857143;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.image--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image--circle {
+  border-radius: 50%;
+}
+
+.footer {
+  height: 50px;
+  background-color: #404040;
+  margin-top: 30px;
+  color: antiquewhite;
+  text-align: center
+}
+
+/* GRID */
+
+/* CONTAINER */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+    height: 650px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+
+/* ROW */
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+
+.col-xs-12 {
+  grid-column: span 12
+}
+
+.col-xs-11 {
+  grid-column: span 11;
+}
+
+.col-xs-10 {
+  grid-column: span 10
+}
+
+.col-xs-9 {
+  grid-column: span 9
+}
+
+.col-xs-8 {
+  grid-column: span 8
+}
+
+.col-xs-7 {
+  grid-column: span 7
+}
+
+.col-xs-6 {
+  grid-column: span 6
+}
+
+.col-xs-5 {
+  grid-column: span 5
+}
+
+.col-xs-4 {
+  grid-column: span 4
+}
+
+.col-xs-3 {
+  grid-column: span 3
+}
+
+.col-xs-2 {
+  grid-column: span 2
+}
+
+.col-xs-1 {
+  grid-column: span 1
+}
+
+@media (min-width: 768px) {
+  .col-sm-12 {
+    grid-column: span 12
+  }
+
+  .col-sm-11 {
+    grid-column: span 11;
+  }
+
+  .col-sm-10 {
+    grid-column: span 10
+  }
+
+  .col-sm-9 {
+    grid-column: span 9
+  }
+
+  .col-sm-8 {
+    grid-column: span 8
+  }
+
+  .col-sm-7 {
+    grid-column: span 7
+  }
+
+  .col-sm-6 {
+    grid-column: span 6
+  }
+
+  .col-sm-5 {
+    grid-column: span 5
+  }
+
+  .col-sm-4 {
+    grid-column: span 4
+  }
+
+  .col-sm-3 {
+    grid-column: span 3
+  }
+
+  .col-sm-2 {
+    grid-column: span 2
+  }
+
+  .col-sm-1 {
+    grid-column: span 1
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-12 {
+    grid-column: span 12
+  }
+
+  .col-md-11 {
+    grid-column: span 11;
+  }
+
+  .col-md-10 {
+    grid-column: span 10
+  }
+
+  .col-md-9 {
+    grid-column: span 9
+  }
+
+  .col-md-8 {
+    grid-column: span 8
+  }
+
+  .col-md-7 {
+    grid-column: span 7
+  }
+
+  .col-md-6 {
+    grid-column: span 6
+  }
+
+  .col-md-5 {
+    grid-column: span 5
+  }
+
+  .col-md-4 {
+    grid-column: span 4
+  }
+
+  .col-md-3 {
+    grid-column: span 3
+  }
+
+  .col-md-2 {
+    grid-column: span 2
+  }
+
+  .col-md-1 {
+    grid-column: span 1
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-12 {
+    grid-column: span 12
+  }
+
+  .col-lg-11 {
+    grid-column: span 11;
+  }
+
+  .col-lg-10 {
+    grid-column: span 10
+  }
+
+  .col-lg-9 {
+    grid-column: span 9
+  }
+
+  .col-lg-8 {
+    grid-column: span 8
+  }
+
+  .col-lg-7 {
+    grid-column: span 7
+  }
+
+  .col-lg-6 {
+    grid-column: span 6
+  }
+
+  .col-lg-5 {
+    grid-column: span 5
+  }
+
+  .col-lg-4 {
+    grid-column: span 4
+  }
+
+  .col-lg-3 {
+    grid-column: span 3
+  }
+
+  .col-lg-2 {
+    grid-column: span 2
+  }
+
+  .col-lg-1 {
+    grid-column: span 1
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+  <!-- Page Content -->
+  <div class="container">
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <h1> How to use?</h1>
+            <p> 
+              <ol>
+                <li>Select Language in which you want to speak in</li>
+                <li>Select Language in which you want to hear back the translation</li>
+                <li>Click Listen</li>
+                <li>Click Translate</li>
+              </ol>
+
+            </p>
+          </div>  
+      </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h2>Speak & Translate</h2>
+        <p>
+            <button id="startRecognition" class="button"><span>Start Listening</span></button>
+            in  <select id="select_language" aria-label="Source Language"></select>
+   
+        </p>        
+        <p>
+          <label for="result">Source text</label> <br>
+            <textarea id="txtArea"  style="width:500px;height:200px" autocomplete="false"></textarea>
+         </p>
+      
+
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+          <h2>Output</h2>
+        <p>
+          <button id="stopRecognition" class="button">Translate</button>
+            to
+            <select id="select_dialect"></select>
+        </p>
+        <p>
+            <label for="result">Translated text</label> <br>
+            <textarea id="result" readOnly="true" style="background-color:#ffeeee;width:400px;height:200px" autocomplete="false"></textarea>
+        </p>
+
+      </div>
+    </div>
+
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <footer class="footer">
+    &copy; 2018 Nawaz
+  </footer>  
+
+  <script>
+    'use strict';
+    (() => {                  
+      const langs =[{"hi":"Hindi"}, {"te":"Telugu"},{"ml":"Malayalam"},{"ta":"Tamil"},{"ar":"Arabic"},{"az":"Azerbaijan"},{"sq":"Albanian"},{"am":"Amharic"},{"en":"English"},{"hy":"Armenian"},{"af":"Afrikaans"},{"eu":"Basque"},{"ba":"Bashkir"},{"be":"Belarusian"},{"bn":"Bengali"},{"my":"Burmese"},{"bg":"Bulgarian"},{"bs":"Bosnian"},{"cy":"Welsh"},{"hu":"Hungarian"},{"vi":"Vietnamese"},{"(Creole)":"Haitian"},{"gl":"Galician"},{"nl":"Dutch"},{"Mari":"Hill"},{"el":"Greek"},{"ka":"Georgian"},{"gu":"Gujarati"},{"da":"Danish"},{"he":"Hebrew"},{"yi":"Yiddish"},{"id":"Indonesian"},{"ga":"Irish"},{"it":"Italian"},{"is":"Icelandic"},{"es":"Spanish"},{"kk":"Kazakh"},{"kn":"Kannada"},{"ca":"Catalan"},{"ky":"Kyrgyz"},{"zh":"Chinese"},{"ko":"Korean"},{"xh":"Xhosa"},{"km":"Khmer"},{"lo":"Laotian"},{"la":"Latin"},{"lv":"Latvian"},{"lt":"Lithuanian"},{"lb":"Luxembourgish"},{"mg":"Malagasy"},{"ms":"Malay"},{"mt":"Maltese"},{"mk":"Macedonian"},{"mi":"Maori"},{"mr":"Marathi"},{"mhr":"Mari"},{"sk":"Slovakian"},{"mn":"Mongolian"},{"de":"German"},{"ne":"Nepali"},{"no":"Norwegian"},{"pa":"Punjabi"},{"pap":"Papiamento"},{"fa":"Persian"},{"pl":"Polish"},{"pt":"Portuguese"},{"ro":"Romanian"},{"ru":"Russian"},{"ceb":"Cebuano"},{"sr":"Serbian"},{"si":"Sinhala"},{"sl":"Slovenian"},{"sw":"Swahili"},{"su":"Sundanese"},{"tg":"Tajik"},{"th":"Thai"},{"tl":"Tagalog"},{"tt":"Tatar"},{"tr":"Turkish"},{"udm":"Udmurt"},{"uz":"Uzbek"},{"uk":"Ukrainian"},{"ur":"Urdu"},{"fi":"Finnish"},{"fr":"French"},{"hr":"Croatian"},{"cs":"Czech"},{"sv":"Swedish"},{"gd":"Scottish"},{"et":"Estonian"},{"eo":"Esperanto"},{"jv":"Javanese"},{"ja":"Japanese"}];
+      for (var i = 0; i < langs.length; i++) {
+          var obj = langs[i];
+          for (const key in obj) {
+            select_language.options[i] = new Option(obj[key],key);
+          }  
+
+      }
+      try {
+        var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var recognition = new SpeechRecognition();
+
+        var synth = window.speechSynthesis;
+        var utterance = new SpeechSynthesisUtterance();
+
+      } catch (e) {
+        var recognition = Object;
+      }
+
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      const lang = select_language.options[select_language.selectedIndex].value;
+      recognition.lang = lang;
+      
+      //onChange of source lang
+      select_language.onchange = function(){
+        const lang = select_language.options[select_language.selectedIndex].value;
+        recognition.lang = lang;
+      }      
+      var voices = [];
+      var filteredvoices=[];
+      var optStr='';
+      let populateVoiceList = () => {
+          voices = speechSynthesis.getVoices();
+
+          langs.forEach(obj => {
+            for (const key in obj) {
+              // console.log(key,obj[key])
+              voices.forEach(voice => {
+                const voiceLangCode = voice.lang.split('-')[0];
+                if(key === voiceLangCode){
+                  filteredvoices.push(voice);
+                  optStr += '<option value="'+voice.lang + '" data-name="'+ voice.name + '">'+ obj[key] + '-'+ voice.name + ' (' + voice.lang + ')' +'</option>'+ "\n";
+                }  
+              })
+            }  
+          });
+          select_dialect.innerHTML= optStr;        
+          utterance.voice = filteredvoices[0];
+          // console.log('selecting initial voice', utterance.voice)          
+      }
+      populateVoiceList();      
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoiceList;
+      }
+
+      let selectVoice = () => {
+        const sel = select_dialect.options[select_dialect.selectedIndex]
+        const destLang = sel.value;
+        const name = sel.getAttribute('data-name');
+          // console.log(destLang, name);
+          for(i = 0; i < voices.length ; i++) {
+            // console.log(voices[i].lang, destLang)
+            if(voices[i].lang === destLang && voices[i].name === name) {
+              // console.log('selecting voice', voices[i])
+              utterance.voice = voices[i];
+            }
+          }
+      }
+
+      select_dialect.onchange = function(){
+        selectVoice();
+      }
+
+      recognition.onresult = function (event) {
+        var txtRec = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          txtRec += event.results[i][0].transcript;
+        }
+        document.getElementById('txtArea').value= txtRec;
+      }
+
+      document.getElementById('startRecognition').addEventListener("click",
+                  event => {
+        var ipTxtArea= document.getElementById('txtArea');
+        ipTxtArea.focus();
+        ipTxtArea.value ='';
+        recognition.start();
+        event.currentTarget.setAttribute('disabled','true');
+      }, false)
+
+      document.getElementById('stopRecognition').addEventListener("click",
+                  event => {
+        recognition.stop();
+        const srcTxt = document.getElementById('txtArea').value;
+        if(srcTxt.length!==0){
+          const srcLang = select_language.options[select_language.selectedIndex].value;
+          const destLang = select_dialect.options[select_dialect.selectedIndex].value.split('-')[0];
+          // console.log(srcLang,destLang);
+          translate(srcLang,destLang, srcTxt);
+        }  
+        document.getElementById('startRecognition').removeAttribute('disabled');
+      }, false);
+
+      let translate = (srcLang, destLang, sourceText) => {
+        // console.log(srcLang, destLang, sourceText);
+        var url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180227T153414Z.9ed01c64b4d67f22.65c0e3491afd123211d9a52f250dffcc2ea51652&lang='+srcLang +'-' + destLang + '&text='+ encodeURI(sourceText);        
+        fetch(url ,{cache:'force-cache'})
+          .then(function(response) {
+            // console.log(response);
+            return response.json();
+          })
+          .then(function(result) {
+            const translatedText = result.text;
+            document.getElementById('result').value = translatedText;
+            // console.log('translated lang and voice', translatedText, utterance.voice);
+            utterance.text = translatedText;
+            synth.speak(utterance);            
+          });          
+        
+      }
+
+    })();
+
+  </script>
+
+</body>
+
+</html>
