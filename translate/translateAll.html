@@ -385,13 +385,15 @@ body {
     'use strict';
     (() => {                  
       const langs =[{"hi":"Hindi"}, {"te":"Telugu"},{"ml":"Malayalam"},{"ta":"Tamil"},{"ar":"Arabic"},{"az":"Azerbaijan"},{"sq":"Albanian"},{"am":"Amharic"},{"en":"English"},{"hy":"Armenian"},{"af":"Afrikaans"},{"eu":"Basque"},{"ba":"Bashkir"},{"be":"Belarusian"},{"bn":"Bengali"},{"my":"Burmese"},{"bg":"Bulgarian"},{"bs":"Bosnian"},{"cy":"Welsh"},{"hu":"Hungarian"},{"vi":"Vietnamese"},{"(Creole)":"Haitian"},{"gl":"Galician"},{"nl":"Dutch"},{"Mari":"Hill"},{"el":"Greek"},{"ka":"Georgian"},{"gu":"Gujarati"},{"da":"Danish"},{"he":"Hebrew"},{"yi":"Yiddish"},{"id":"Indonesian"},{"ga":"Irish"},{"it":"Italian"},{"is":"Icelandic"},{"es":"Spanish"},{"kk":"Kazakh"},{"kn":"Kannada"},{"ca":"Catalan"},{"ky":"Kyrgyz"},{"zh":"Chinese"},{"ko":"Korean"},{"xh":"Xhosa"},{"km":"Khmer"},{"lo":"Laotian"},{"la":"Latin"},{"lv":"Latvian"},{"lt":"Lithuanian"},{"lb":"Luxembourgish"},{"mg":"Malagasy"},{"ms":"Malay"},{"mt":"Maltese"},{"mk":"Macedonian"},{"mi":"Maori"},{"mr":"Marathi"},{"mhr":"Mari"},{"sk":"Slovakian"},{"mn":"Mongolian"},{"de":"German"},{"ne":"Nepali"},{"no":"Norwegian"},{"pa":"Punjabi"},{"pap":"Papiamento"},{"fa":"Persian"},{"pl":"Polish"},{"pt":"Portuguese"},{"ro":"Romanian"},{"ru":"Russian"},{"ceb":"Cebuano"},{"sr":"Serbian"},{"si":"Sinhala"},{"sl":"Slovenian"},{"sw":"Swahili"},{"su":"Sundanese"},{"tg":"Tajik"},{"th":"Thai"},{"tl":"Tagalog"},{"tt":"Tatar"},{"tr":"Turkish"},{"udm":"Udmurt"},{"uz":"Uzbek"},{"uk":"Ukrainian"},{"ur":"Urdu"},{"fi":"Finnish"},{"fr":"French"},{"hr":"Croatian"},{"cs":"Czech"},{"sv":"Swedish"},{"gd":"Scottish"},{"et":"Estonian"},{"eo":"Esperanto"},{"jv":"Javanese"},{"ja":"Japanese"}];
+      let srcStr='';
       for (var i = 0; i < langs.length; i++) {
           var obj = langs[i];
           for (const key in obj) {
-            select_language.options[i] = new Option(obj[key],key);
+            srcStr += '<option value="'+key + '">'+ obj[key] +'</option>'+ "\n";
           }  
 
       }
+      select_language.innerHTML= srcStr;
       try {
         var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognition = new SpeechRecognition();
@@ -400,7 +402,7 @@ body {
         var utterance = new SpeechSynthesisUtterance();
 
       } catch (e) {
-        var recognition = Object;
+        let recognition = Object;
       }
 
       recognition.continuous = true;
@@ -416,24 +418,28 @@ body {
       var voices = [];
       var filteredvoices=[];
       var optStr='';
-      let populateVoiceList = () => {
+      var populateVoiceList = () => {
           voices = speechSynthesis.getVoices();
-
-          langs.forEach(obj => {
-            for (const key in obj) {
-              // console.log(key,obj[key])
-              voices.forEach(voice => {
-                const voiceLangCode = voice.lang.split('-')[0];
-                if(key === voiceLangCode){
-                  filteredvoices.push(voice);
-                  optStr += '<option value="'+voice.lang + '" data-name="'+ voice.name + '">'+ obj[key] + '-'+ voice.name + ' (' + voice.lang + ')' +'</option>'+ "\n";
-                }  
-              })
-            }  
-          });
-          select_dialect.innerHTML= optStr;        
-          utterance.voice = filteredvoices[0];
-          // console.log('selecting initial voice', utterance.voice)          
+          if(voices ===null || voices.length === 0){
+            select_dialect.innerHTML= srcStr;
+            utterance.voice = filteredvoices[0];            
+          }else{            
+            langs.forEach(obj => {
+              for (const key in obj) {
+                // console.log(key,obj[key])
+                voices.forEach(voice => {
+                  const voiceLangCode = voice.lang.split('-')[0];
+                  if(key === voiceLangCode){
+                    filteredvoices.push(voice);
+                    optStr += '<option value="'+voice.lang + '" data-name="'+ voice.name + '">'+ obj[key] + '-'+ voice.name + ' (' + voice.lang + ')' +'</option>'+ "\n";
+                  }  
+                })
+              }  
+            });
+              select_dialect.innerHTML= optStr;
+              utterance.voice = filteredvoices[0];
+            // console.log('selecting initial voice', utterance.voice)
+          }
       }
       populateVoiceList();      
       if (speechSynthesis.onvoiceschanged !== undefined) {
