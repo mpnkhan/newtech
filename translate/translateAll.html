@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: calc(0.1vw + 0.1vh + 1em);
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -79,6 +79,13 @@ body {
 }
 
 /* GRID */
+
+.txtResult{
+  background-color:#ffeeee;
+  width:400px;
+  height:200px;
+  font-size:calc(0.1vw + 0.1vh + 1em);
+}
 
 /* CONTAINER */
 .container {
@@ -362,7 +369,7 @@ body {
         </p>
         <p>
             <label for="result">Translated text</label> <br>
-            <textarea id="result" readOnly="true" style="background-color:#ffeeee;width:400px;height:200px" autocomplete="false"></textarea>
+            <textarea id="result" readOnly="true" class="txtResult" autocomplete="false"></textarea>
         </p>
 
       </div>
@@ -422,7 +429,6 @@ body {
           voices = speechSynthesis.getVoices();
           if(voices ===null || voices.length === 0){
             select_dialect.innerHTML= srcStr;
-            utterance.voice = filteredvoices[0];            
           }else{            
             langs.forEach(obj => {
               for (const key in obj) {
