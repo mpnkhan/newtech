@@ -115,6 +115,7 @@
       photoanalze= data;
     } else {
       clearphoto();
+      document.getElementById('responseTextArea').value="";
     }
   }
 
@@ -149,7 +150,6 @@ serialize = function(obj) {
 }
 
 function postData(data) {
-
    var params = {
         "returnFaceId": "true",
         "returnFaceLandmarks": "false",
@@ -160,8 +160,8 @@ function postData(data) {
 
   let url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?' + serialize(params);
   return fetch(url, {
-    body: makeblob(data), // must match 'Content-Type' header
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    body: makeblob(data), 
+    cache: 'no-cache',    // *default, no-cache, reload, force-cache, only-if-cached
     headers: {
       'Content-Type': 'application/octet-stream',
       'Ocp-Apim-Subscription-Key': '34ea82b4b0424daab119769c89cedbe8'   
@@ -170,10 +170,18 @@ function postData(data) {
   })
   .then(response => response.json()) // parses response to JSON
   .then(function(myJson) {
-      // console.log(myJson);
-
+      // console.log(myJson[0].faceRectangle);
       var resultDiv = document.getElementById('responseTextArea');
       resultDiv.value= JSON.stringify(myJson, null, 2);
+
+      // var photoRect = myJson[0].faceRectangle;
+      // var sqr = document.getElementById('sqr');
+      // sqr.style.display="block";
+      // sqr.style.width = photoRect.width + 'px';
+      // sqr.style.height = photoRect.height + 'px';
+      // sqr.style.left = photoRect.left + 100 + 'px';
+      // sqr.style.top = photoRect.top + 100 + 'px';
+      
   });
 }
   window.addEventListener('load', startup, false);
