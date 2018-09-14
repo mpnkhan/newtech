@@ -159,31 +159,130 @@ function postData(data) {
     };
 
   let url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?' + serialize(params);
+  // let url = 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?' + serialize(params);
+
   return fetch(url, {
     body: makeblob(data), 
     cache: 'no-cache',    // *default, no-cache, reload, force-cache, only-if-cached
     headers: {
       'Content-Type': 'application/octet-stream',
-      'Ocp-Apim-Subscription-Key': '34ea82b4b0424daab119769c89cedbe8'   
+      // 'Ocp-Apim-Subscription-Key': '55c111fd66f340289347a12ba4063c73'   //recognize
+      'Ocp-Apim-Subscription-Key': '09e1943bd89448dc8b0639a451847296'   
     },
     method: 'POST'
   })
   .then(response => response.json()) // parses response to JSON
   .then(function(myJson) {
+    // console.log(myJson)
       // console.log(myJson[0].faceRectangle);
+
+/*
+[
+  {
+    "faceId": "4211cd8b-3573-4391-817e-d04a65e0b043",
+    "faceRectangle": {
+      "top": 144,
+      "left": 153,
+      "width": 74,
+      "height": 74
+    },
+    "faceAttributes": {
+      "smile": 0,
+      "headPose": {
+        "pitch": 0,
+        "roll": -0.1,
+        "yaw": 6.4
+      },
+      "gender": "male",
+      "age": 49,
+      "facialHair": {
+        "moustache": 0.4,
+        "beard": 0.1,
+        "sideburns": 0.1
+      },
+      "glasses": "NoGlasses",
+      "emotion": {
+        "anger": 0,
+        "contempt": 0,
+        "disgust": 0,
+        "fear": 0,
+        "happiness": 0,
+        "neutral": 0.996,
+        "sadness": 0.004,
+        "surprise": 0
+      },
+      "blur": {
+        "blurLevel": "low",
+        "value": 0.07
+      },
+      "exposure": {
+        "exposureLevel": "goodExposure",
+        "value": 0.53
+      },
+      "noise": {
+        "noiseLevel": "low",
+        "value": 0
+      },
+      "makeup": {
+        "eyeMakeup": false,
+        "lipMakeup": false
+      },
+      "accessories": [],
+      "occlusion": {
+        "foreheadOccluded": false,
+        "eyeOccluded": false,
+        "mouthOccluded": false
+      },
+      "hair": {
+        "bald": 0.03,
+        "invisible": false,
+        "hairColor": [
+          {
+            "color": "gray",
+            "confidence": 0.99
+          },
+          {
+            "color": "black",
+            "confidence": 0.98
+          },
+          {
+            "color": "other",
+            "confidence": 0.49
+          },
+          {
+            "color": "blond",
+            "confidence": 0.39
+          },
+          {
+            "color": "brown",
+            "confidence": 0.13
+          },
+          {
+            "color": "red",
+            "confidence": 0
+          }
+        ]
+      }
+    }
+  }
+]
+*/   
+
+    var faceAttributes = myJson[0].faceAttributes;
+    var age = faceAttributes.age;
+    var gender = faceAttributes.gender;
+    var facialHair = (faceAttributes.facialHair.beard>0) ? 'with  beard ':'' 
+    facialHair += (faceAttributes.facialHair.moustache>0)? ' has moustache ':'';
+
+    var res= '<strong> Detected ' + gender +' of ' + age + 'years'  + facialHair +'</strong>';
+    document.getElementById('desc').innerHTML= res;
+
       var resultDiv = document.getElementById('responseTextArea');
       resultDiv.value= JSON.stringify(myJson, null, 2);
-
-      // var photoRect = myJson[0].faceRectangle;
-      // var sqr = document.getElementById('sqr');
-      // sqr.style.display="block";
-      // sqr.style.width = photoRect.width + 'px';
-      // sqr.style.height = photoRect.height + 'px';
-      // sqr.style.left = photoRect.left + 100 + 'px';
-      // sqr.style.top = photoRect.top + 100 + 'px';
       
   });
 }
   window.addEventListener('load', startup, false);
+
 
 })();
