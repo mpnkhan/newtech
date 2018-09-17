@@ -1,0 +1,92 @@
+h1 {
+	text-align: center;
+	font-size:50px;
+	color:#222;
+	font-family: 'open-sans', 'arial', 'seriff';
+	margin-bottom:20px;
+}
+
+table {
+	border-collapse:collapse;
+    border:3px solid #333;
+    display:inline-block;
+}
+
+table tr td {
+	margin:0;
+	padding:0;
+	width:15px;
+	height:15px;
+	border:1px solid #eee;
+}
+
+.clear {
+    clear:both;
+}
+
+#perdu {
+	text-align: center;
+}
+
+#disp-score {
+	font-size:30px;
+    width:250px;
+    float:left;
+    text-align:center;
+    margin-top:50px;
+}
+
+#container {
+    width:960px;
+    margin:auto;
+}
+
+video {
+	width: 200px;
+	height:200px;
+	margin:0 0 0 25px;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    filter: FlipH;
+}
+
+#c-left {
+    width:250px;
+    float:left;
+    position:relative;
+}
+
+#c-right {
+    width:700px;
+    float:right;
+}
+
+#canvas {
+    width:200px;
+    height:200px;
+    margin-left:25px;
+}
+
+#move {
+    width:10px;
+    height:10px;
+    border-radius:5px;
+    background-color:#0000ff !important;
+    display:inline-block;
+    position:absolute;
+    bottom:95px;
+    left:95px;
+}
+
+#sous-canvas {
+    width:200px;
+    height:205px;
+    float:left;
+    top:200px;
+    left:0;
+    display:inline-block;
+    position:absolute;
+    margin-left:25px;
+}

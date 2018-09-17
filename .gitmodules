@@ -1,0 +1,15 @@
+[submodule "tracking"]
+	path = tracking
+	url = https://github.com/mpnkhan/tracking.js.git
+[submodule "jsobjectdetect"]
+	path = jsobjectdetect
+	url = https://github.com/mpnkhan/js-objectdetect.git
+[submodule "HexGL"]
+	path = HexGL
+	url = https://github.com/pablocp/HexGL.git
+[submodule "facetrack"]
+	path = facetrack
+	url = https://github.com/mpnkhan/clmtrackr.git
+[submodule "headtrack"]
+	path = headtrack
+	url = https://github.com/mpnkhan/headtrackr.git

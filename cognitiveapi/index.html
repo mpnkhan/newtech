@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+  <title>Using Microsoft Face Detection API</title>
+
+  <style>
+video {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+}
+#screenshot-img {
+    width: 400px;
+    height: 300px;
+}
+</style>
+ </head>
+ <body>
+
+  <div id="screenshot" style="text-align:center;">
+  <video class="videostream" autoplay></video>
+
+      <canvas style="display:none;"></canvas>
+  <img id="screenshot-img">
+  <p><button class="capture-button">Start</button>
+  <p><button id="screenshot-button" disabled>Detect Face</button></p>
+
+  <p id="desc" style="font-size: 19px;"></p>
+  <p>
+     <textarea id="responseTextArea" style="width:580px; height:400px;"> </textarea>
+  </p>
+
+</div>
+
+
+
+<script>
+function handleError(error) {
+  console.error('navigator.getUserMedia error: ', error);
+}
+const constraints = {video: true};
+
+
+(function() {
+  const captureVideoButton =
+    document.querySelector('#screenshot .capture-button');
+  const screenshotButton = document.querySelector('#screenshot-button');
+  const img = document.querySelector('#screenshot img');
+  var photoanalze= null;
+  const video = document.querySelector('#screenshot video');
+
+  const canvas = document.createElement('canvas');
+
+  captureVideoButton.onclick = function() {
+    navigator.mediaDevices.getUserMedia(constraints).
+      then(handleSuccess).catch(handleError);
+  };
+
+  screenshotButton.onclick = video.onclick = function() {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    // Other browsers will fall back to image/png
+    var data = canvas.toDataURL('image/png');
+    img.src = data;
+    photoanalze= data;
+    postData(photoanalze);
+  };
+
+  function handleSuccess(stream) {
+    screenshotButton.disabled = false;
+    video.srcObject = stream;
+    // postData(photoanalze);
+  }
+
+function makeblob (dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+        var parts = dataURL.split(',');
+        var contentType = parts[0].split(':')[1];
+        var raw = decodeURIComponent(parts[1]);
+        return new Blob([raw], { type: contentType });
+    }
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+}
+serialize = function(obj) {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+  function postData(data) {
+   var params = {
+        "returnFaceId": "true",
+        "returnFaceLandmarks": "false",
+        "returnFaceAttributes":
+            "age,gender,headPose,smile,facialHair,glasses,emotion," +
+            "hair,makeup,occlusion,accessories,blur,exposure,noise"
+    };
+
+  let url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?' + serialize(params);
+  // let url = 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?' + serialize(params);
+
+  return fetch(url, {
+    body: makeblob(data), 
+    cache: 'no-cache',    // *default, no-cache, reload, force-cache, only-if-cached
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      // 'Ocp-Apim-Subscription-Key': '55c111fd66f340289347a12ba4063c73'   //recognize
+      'Ocp-Apim-Subscription-Key': '09e1943bd89448dc8b0639a451847296'   
+    },
+    method: 'POST'
+  })
+  .then(response => response.json()) // parses response to JSON
+  .then(function(myJson) { 
+    var faceAttributes = myJson[0].faceAttributes;
+    var age = faceAttributes.age;
+    var gender = faceAttributes.gender;
+    var facialHair = (faceAttributes.facialHair.beard>0) ? 'with  beard ':'' 
+    facialHair += (faceAttributes.facialHair.moustache>0)? ' has moustache ':'';
+
+    var res= '<strong> Detected ' + gender +' of ' + age + 'years'  + facialHair +'</strong>';
+    document.getElementById('desc').innerHTML= res;
+
+      var resultDiv = document.getElementById('responseTextArea');
+      resultDiv.value= JSON.stringify(myJson, null, 2);
+      
+  });
+}
+})();
+</script>
+
+</body>
+</html>
