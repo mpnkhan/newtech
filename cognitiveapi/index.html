@@ -130,7 +130,7 @@ serialize = function(obj) {
     var faceAttributes = myJson[0].faceAttributes;
     var age = faceAttributes.age;
     var gender = faceAttributes.gender;
-    var facialHair = (faceAttributes.facialHair.beard>0) ? 'with  beard ':'' 
+    var facialHair = (faceAttributes.facialHair.beard>0) ? ' with  beard ':'' 
     facialHair += (faceAttributes.facialHair.moustache>0)? ' has moustache ':'';
 
     var res= '<strong> Detected ' + gender +' of ' + age + 'years'  + facialHair +'</strong>';
