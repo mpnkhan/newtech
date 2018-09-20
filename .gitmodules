@@ -13,3 +13,9 @@
 [submodule "headtrack"]
 	path = headtrack
 	url = https://github.com/mpnkhan/headtrackr.git
+[submodule "webgazer"]
+	path = webgazer
+	url = https://github.com/mpnkhan/WebGazer.git
+[submodule "streetfacing"]
+	path = streetfacing
+	url = https://github.com/mpnkhan/street-facing.git
