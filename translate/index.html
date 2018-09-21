@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: calc(0.1vw + 0.1vh + 1em);
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -79,6 +79,13 @@ body {
 }
 
 /* GRID */
+
+.txtResult{
+  background-color:#ffeeee;
+  width:400px;
+  height:200px;
+  font-size:calc(0.1vw + 0.1vh + 1em);
+}
 
 /* CONTAINER */
 .container {
@@ -347,7 +354,7 @@ body {
         </p>        
         <p>
           <label for="result">Source text</label> <br>
-            <textarea id="txtArea" readOnly="true" style="width:500px;height:200px" autocomplete="false"></textarea>
+            <textarea id="txtArea"  style="width:500px;height:200px" autocomplete="false"></textarea>
          </p>
       
 
@@ -358,41 +365,21 @@ body {
         <p>
           <button id="stopRecognition" class="button">Translate</button>
             to
-            <!-- <select id="select_dialect"></select> -->
-            <select id="select_dialect" aria-label="Destination Language">
-                <option value="en-IN" data-name="Veena">Veena (en-IN)</option>               
-                 <option value="ta-IN" data-name="Radhae">Radhae (ta-IN)</option>
-                 <option value="hi-IN" data-name="Google हिन्दी">Google हिन्दी (hi-IN)</option>    
-                 <option value="hi-IN" data-name="Lekha">Lekha (hi-IN)</option>    
-                 <option value="en-US" data-name="Alex">Alex (en-US)</option>
-                 <option value="en-US" data-name="Google US English">Google US English (en-US)</option>
-                 <option value="en-GB" data-name="Google UK English Female">Google UK English Female (en-GB)</option>
-                 <option value="en-GB" data-name="Google UK English Male">Google UK English Male (en-GB)</option>       
-                 <option value="en-GB" data-name="Daniel">Daniel (en-GB)</option>
-                 <option value="en" data-name="Fiona">Fiona (en)</option>
-                 <option value="en-US" data-name="Fred">Fred (en-US)</option>
-                 <option value="ar-SA" data-name="Maged">Maged (ar-SA)</option>
-                 <option value="en-IE" data-name="Moira">Moira (en-IE)</option>
-                 <option value="en-US" data-name="Samantha">Samantha (en-US)</option>
-                 <option value="en-ZA" data-name="Tessa">Tessa (en-ZA)</option>
-                 <option value="en-US" data-name="Victoria">Victoria (en-US)</option>
-                 <option value="nl-NL" data-name="Xander">Xander (nl-NL)</option>
-                 <option value="tr-TR" data-name="Yelda">Yelda (tr-TR)</option>
-                 <option value="ko-KR" data-name="Yuna">Yuna (ko-KR)</option>
-                 <option value="ru-RU" data-name="Yuri">Yuri (ru-RU)</option>
-                 <option value="pl-PL" data-name="Zosia">Zosia (pl-PL)</option>
-                 <option value="ta-IN" data-name="Krishna">Krishna (ta-IN)</option>
-             </select>
+            <select id="select_dialect"></select>
         </p>
         <p>
             <label for="result">Translated text</label> <br>
-            <textarea id="result" readOnly="true" style="background-color:#ffeeee;width:400px;height:200px" autocomplete="false"></textarea>
+            <textarea id="result" readOnly="true" class="txtResult" autocomplete="false"></textarea>
         </p>
 
       </div>
     </div>
 
     <!-- /.row -->
+    <p>
+       Sorry to say this works best works with chrome, but that is truth, because extra google voices get loaded on chrome and moreover chrome is like yesterday's IE
+
+    </p>
 
   </div>
   <!-- /.container -->
@@ -403,26 +390,17 @@ body {
 
   <script>
     'use strict';
-    (() => {
-      const langs =[{"hi":"Hindi"}, {"te":"Telugu"},{"ml":"Malayalam"},{"ta":"Tamil"},{"ar":"Arabic"},{"az":"Azerbaijan"},{"sq":"Albanian"},{"am":"Amharic"},{"en":"English"},{"hy":"Armenian"},{"af":"Afrikaans"},{"eu":"Basque"},{"ba":"Bashkir"},{"be":"Belarusian"},{"bn":"Bengali"},{"my":"Burmese"},{"bg":"Bulgarian"},{"bs":"Bosnian"},{"cy":"Welsh"},{"hu":"Hungarian"},{"vi":"Vietnamese"},{"(Creole)":"Haitian"},{"gl":"Galician"},{"nl":"Dutch"},{"Mari":"Hill"},{"el":"Greek"},{"ka":"Georgian"},{"gu":"Gujarati"},{"da":"Danish"},{"he":"Hebrew"},{"yi":"Yiddish"},{"id":"Indonesian"},{"ga":"Irish"},{"it":"Italian"},{"is":"Icelandic"},{"es":"Spanish"},{"kk":"Kazakh"},{"kn":"Kannada"},{"ca":"Catalan"},{"ky":"Kyrgyz"},{"zh":"Chinese"},{"ko":"Korean"},{"xh":"Xhosa"},{"km":"Khmer"},{"lo":"Laotian"},{"la":"Latin"},{"lv":"Latvian"},{"lt":"Lithuanian"},{"lb":"Luxembourgish"},{"mg":"Malagasy"},{"ms":"Malay"},{"mt":"Maltese"},{"mk":"Macedonian"},{"mi":"Maori"},{"mr":"Marathi"},{"mhr":"Mari"},{"sk":"Slovakian"},{"mn":"Mongolian"},{"de":"German"},{"ne":"Nepali"},{"no":"Norwegian"},{"pa":"Punjabi"},{"pap":"Papiamento"},{"fa":"Persian"},{"pl":"Polish"},{"pt":"Portuguese"},{"ro":"Romanian"},{"ru":"Russian"},{"ceb":"Cebuano"},{"sr":"Serbian"},{"si":"Sinhala"},{"sl":"Slovenian"},{"sw":"Swahili"},{"su":"Sundanese"},{"tg":"Tajik"},{"th":"Thai"},{"tl":"Tagalog"},{"tt":"Tatar"},{"tr":"Turkish"},{"udm":"Udmurt"},{"uz":"Uzbek"},{"uk":"Ukrainian"},{"ur":"Urdu"},{"fi":"Finnish"},{"fr":"French"},{"hr":"Croatian"},{"cs":"Czech"},{"sv":"Swedish"},{"gd":"Scottish"},{"et":"Estonian"},{"eo":"Esperanto"},{"jv":"Javanese"},{"ja":"Japanese"}]
+    (() => {                  
+      const langs =[{"hi":"Hindi"}, {"te":"Telugu"},{"ml":"Malayalam"},{"ta":"Tamil"},{"ar":"Arabic"},{"az":"Azerbaijan"},{"sq":"Albanian"},{"am":"Amharic"},{"en":"English"},{"hy":"Armenian"},{"af":"Afrikaans"},{"eu":"Basque"},{"ba":"Bashkir"},{"be":"Belarusian"},{"bn":"Bengali"},{"my":"Burmese"},{"bg":"Bulgarian"},{"bs":"Bosnian"},{"cy":"Welsh"},{"hu":"Hungarian"},{"vi":"Vietnamese"},{"(Creole)":"Haitian"},{"gl":"Galician"},{"nl":"Dutch"},{"Mari":"Hill"},{"el":"Greek"},{"ka":"Georgian"},{"gu":"Gujarati"},{"da":"Danish"},{"he":"Hebrew"},{"yi":"Yiddish"},{"id":"Indonesian"},{"ga":"Irish"},{"it":"Italian"},{"is":"Icelandic"},{"es":"Spanish"},{"kk":"Kazakh"},{"kn":"Kannada"},{"ca":"Catalan"},{"ky":"Kyrgyz"},{"zh":"Chinese"},{"ko":"Korean"},{"xh":"Xhosa"},{"km":"Khmer"},{"lo":"Laotian"},{"la":"Latin"},{"lv":"Latvian"},{"lt":"Lithuanian"},{"lb":"Luxembourgish"},{"mg":"Malagasy"},{"ms":"Malay"},{"mt":"Maltese"},{"mk":"Macedonian"},{"mi":"Maori"},{"mr":"Marathi"},{"mhr":"Mari"},{"sk":"Slovakian"},{"mn":"Mongolian"},{"de":"German"},{"ne":"Nepali"},{"no":"Norwegian"},{"pa":"Punjabi"},{"pap":"Papiamento"},{"fa":"Persian"},{"pl":"Polish"},{"pt":"Portuguese"},{"ro":"Romanian"},{"ru":"Russian"},{"ceb":"Cebuano"},{"sr":"Serbian"},{"si":"Sinhala"},{"sl":"Slovenian"},{"sw":"Swahili"},{"su":"Sundanese"},{"tg":"Tajik"},{"th":"Thai"},{"tl":"Tagalog"},{"tt":"Tatar"},{"tr":"Turkish"},{"udm":"Udmurt"},{"uz":"Uzbek"},{"uk":"Ukrainian"},{"ur":"Urdu"},{"fi":"Finnish"},{"fr":"French"},{"hr":"Croatian"},{"cs":"Czech"},{"sv":"Swedish"},{"gd":"Scottish"},{"et":"Estonian"},{"eo":"Esperanto"},{"jv":"Javanese"},{"ja":"Japanese"}];
+      let srcStr='';
       for (var i = 0; i < langs.length; i++) {
           var obj = langs[i];
           for (const key in obj) {
-            select_language.options[i] = new Option(obj[key],key);
+            srcStr += '<option value="'+key + '">'+ obj[key] +'</option>'+ "\n";
           }  
 
       }
-      function langSupport(lang){
-        var isLangSupported = false;
-          for (var i = 0; i < langs.length; i++) {
-              var obj = langs[i];
-              if(obj.hasOwnProperty(lang)){
-                isLangSupported =true;
-                return isLangSupported;
-              }
-          }     
-      }
-
+      select_language.innerHTML= srcStr;
       try {
         var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognition = new SpeechRecognition();
@@ -431,18 +409,47 @@ body {
         var utterance = new SpeechSynthesisUtterance();
 
       } catch (e) {
-        var recognition = Object;
+        let recognition = Object;
       }
 
       recognition.continuous = true;
       recognition.interimResults = true;
       const lang = select_language.options[select_language.selectedIndex].value;
       recognition.lang = lang;
-
+      
       //onChange of source lang
       select_language.onchange = function(){
         const lang = select_language.options[select_language.selectedIndex].value;
         recognition.lang = lang;
+      }      
+      var voices = [];
+      var filteredvoices=[];
+      var optStr='';
+      var populateVoiceList = () => {
+          voices = speechSynthesis.getVoices();
+          if(voices ===null || voices.length === 0){
+            select_dialect.innerHTML= srcStr;
+          }else{            
+            langs.forEach(obj => {
+              for (const key in obj) {
+                // console.log(key,obj[key])
+                voices.forEach(voice => {
+                  const voiceLangCode = voice.lang.split('-')[0];
+                  if(key === voiceLangCode){
+                    filteredvoices.push(voice);
+                    optStr += '<option value="'+voice.lang + '" data-name="'+ voice.name + '">'+ obj[key] + '-'+ voice.name + ' (' + voice.lang + ')' +'</option>'+ "\n";
+                  }  
+                })
+              }  
+            });
+              select_dialect.innerHTML= optStr;
+              // utterance.voice = filteredvoices[0];
+            // console.log('selecting initial voice', utterance.voice)
+          }
+      }
+      populateVoiceList();      
+      if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = populateVoiceList;
       }
 
       let selectVoice = () => {
@@ -450,7 +457,6 @@ body {
         const destLang = sel.value;
         const name = sel.getAttribute('data-name');
           // console.log(destLang, name);
-          let voices = speechSynthesis.getVoices();
           for(i = 0; i < voices.length ; i++) {
             // console.log(voices[i].lang, destLang)
             if(voices[i].lang === destLang && voices[i].name === name) {
@@ -458,10 +464,6 @@ body {
               utterance.voice = voices[i];
             }
           }
-      }
-      selectVoice();
-      if (speechSynthesis.onvoiceschanged !== undefined) {
-        speechSynthesis.onvoiceschanged = selectVoice;
       }
 
       select_dialect.onchange = function(){
