@@ -61,7 +61,6 @@ const constraints = {video: true};
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext('2d').drawImage(video, 0, 0);
-    // Other browsers will fall back to image/png
     var data = canvas.toDataURL('image/png');
     img.src = data;
     photoanalze= data;
