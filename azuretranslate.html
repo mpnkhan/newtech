@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<title>Using Microsoft Face Detection API</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+<div id="result">
+
+</div>
+
+<script type="text/javascript">
+	
+// let translate = (srcLang, destLang, sourceText) => {    
+//     return new Promise((resolve, reject) => {
+//       var url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20180227T153414Z.9ed01c64b4d67f22.65c0e3491afd123211d9a52f250dffcc2ea51652&lang='+srcLang +'-' + destLang + '&text='+ encodeURI(sourceText);        
+//       fetch(url ,{cache:'force-cache'})
+//         .then(function(response) {
+//           return response.json();
+//         })
+//         .then(function(result) {
+//           resolve(result.text);
+//         });             
+//     });  
+//   }  
+
+let get_guid = function () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+
+let translate = (srcLang, destLang, sourceText) => {
+    let subscriptionKey = '8d3b587ccc284f1aaeba230ae9060be6';
+    return new Promise((resolve, reject) => {
+      let url = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from='+srcLang +'&to=' + destLang;
+      // var url ='https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans';
+    	let params = '&from=' + srcLang +'&to='+ destLang;
+    	let content = JSON.stringify ([{'Text' : sourceText}]);
+
+    	fetch(url, {
+    	  method: 'POST',
+    		// hostname : host,
+    		// path : path + params,
+      	body: content,
+    		headers:{
+    			'Content-Type': 'application/json',
+    			'Ocp-Apim-Subscription-Key' : subscriptionKey,
+    			'X-ClientTraceId' : get_guid (),	    
+    		}
+    	}).then(function(res) {
+          resolve(res);
+      }).catch( error => reject(error) );
+          
+     }); 
+  }  
+
+  	let text = 'Hello, world!';
+
+      translate('en' ,'de',text)
+        .then(function(response) {
+            console.log('tranlated text',response)
+       })
+
+
+</script>
+
+
+</body>
+</html>
