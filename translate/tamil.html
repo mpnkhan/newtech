@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+ <meta charset="utf-8">
+  <head>
+	<title>யுனிகோடு மாற்றி</title>
+    <meta charset="utf-8">
+	<style>
+	#container {
+		padding: 0 1em;
+	}
+	* {
+		-moz-box-sizing: border-box;
+	}
+	.content {
+    margin: 1em auto;
+    max-width: 600px;
+}
+.button {
+  cursor: pointer;
+  position: relative;
+  padding: .5rem .75rem;
+  border-radius: 3.75rem;
+  line-height: 2.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  
+  border: 1px solid #012880;
+  background-image: linear-gradient(-180deg, #FF89D6 0%, #C01F9E 100%);
+  box-shadow: 0 1rem 1.25rem 0 rgba(22,75,195,0.50),
+              0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+              0 0.75rem 0.5rem rgba(255,255,255, 0.4) inset,
+              0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+}
+
+.button span {
+  color: transparent;
+  background-image: linear-gradient(0deg, #EE82DA 0%, #FEFAFD 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 2px 2px hsla(290, 100%, 20%, 1));
+}
+
+.button::before {
+  content: "";
+  display: block;
+  height: 0.1rem;
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 7.5rem);
+  background: #fff;
+  border-radius: 100%;
+  
+  opacity: 0.7;
+  background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+.button::after {
+  content: "";
+  display: block;
+  height: 0.15rem;
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 7.5rem);
+  background: #fff;
+  border-radius: 100%;
+  
+  filter: blur(1px);
+  opacity: 0.05;
+  background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+	</style>
+ </head>
+<body>
+
+
+	<p align=center><b><font face="Verdana" color="#92B6DA">
+			<select id='convert' onChange='convert_to_utf()'>
+				<option value="">-Please select-</option>
+				<option value="english2tamil" selected>Tanglish to Tamil Unicode</option>
+				<option value="bamini2unicode">Bamini,Sarukesi,Singari,Singaram,Roja to Unicode</option>
+				<option value="kavi2unicode">Kavipriya,Kaveri to Unicode</option>
+				<option value="t_serial_unicode">T_ serial fonts like (T_Bamini, T_sarukesi, T_singari, T_singaram, T_Roja... ) to Unicode</option>
+				<option value="unicode2bamini">Unicode to Bamini</option>
+				<option value="invert_comma_correction">Inverted Comma correction</option>
+				
+				
+			</select>
+			</font></b>
+	</p>
+
+<DIV align=center>
+<CENTER>
+
+<TABLE cellSpacing=0 cellPadding=2 width=1024  bgColor=#FFFFFF border=1 style="border-collapse: collapse;" bordercolor="#CCCCCC">
+  <TBODY>
+  <tr>
+    <TD align=middle bgcolor="#FFE2A8"><P align=center><FONT size=2><SPAN class=english>a</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+		<P align=center><font size="2" face="TheneeUniTx">அ</font></P></TD>
+    <TD align=middle width="27" bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>u</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">உ</font></P>
+	</TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN class=english>ai</SPAN></FONT></P>
+	</TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஐ</font></P>
+	</TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>-ha</SPAN></FONT></P>
+	</TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ஹ</font></P>
+	</TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN class=english>nth/w</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ந்</font></P>
+	</TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>na</SPAN></FONT></P>
+	</TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ன</font></P>
+	</TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN class=english>d/t</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <p align="center"><font size="2" face="TheneeUniTx">ட்</font>
+	</TD>
+  </tr>
+  <tr>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN class=english>A/aa</SPAN></FONT></P>
+	</TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஆ</font></P>
+	</TD>
+    <TD align=middle width="27" bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>U/uu</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ஊ</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN class=english>o</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <p align="center"><font size="2" face="TheneeUniTx">ஒ</font>
+	</TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>na/-na</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ந</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>ng</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ங்</font></P></TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN class=english>Na</SPAN></FONT></P>
+	</TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ண</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8"><P align=center><FONT size=2><SPAN class=english>R</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <p align="center"><font size="2" face="TheneeUniTx">ற்</font></TD>
+  </tr>
+  <tr>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>i</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">இ</font></P></TD>
+    <TD align=middle width="27" bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>e</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">எ</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>O/oo</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஓ</font></P></TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>-s/S</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ஸ</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>nj</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஞ்</font></P></TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>zh/z</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <p align="center"><font size="2" face="TheneeUniTx">ழ்</font></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>nga</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <p align="center"><font size="2" face="TheneeUniTx">ங</font></TD>
+  </tr>
+  <tr>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>I/ii</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஈ</font></P></TD>
+    <TD align=middle width="27" bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>E/ee</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <p align="center"><font size="2" face="TheneeUniTx">ஏ</font></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>au</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஒள</font></P></TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>kai</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <p align="center"><font size="2" face="TheneeUniTx">கை</font></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>sha</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <P align=center><font size="2" face="TheneeUniTx">ஷ</font></P></TD>
+    <TD align=middle bgcolor="#FFECC4">
+      <P align=center><FONT size=2><SPAN 
+      class=english>L</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFECC4">
+      <P align=center><font size="2" face="TheneeUniTx">ள்</font></P></TD>
+    <TD align=middle bgcolor="#FFE2A8">
+      <P align=center><FONT size=2><SPAN 
+      class=english>nja</SPAN></FONT></P></TD>
+    <TD class=smallgrey align=middle bgcolor="#FFE2A8">
+      <p align="center"><font size="2" face="TheneeUniTx">ஞ</font></TD>
+  </tr>
+  </TBODY>
+</TABLE>
+</center>
+</div>
+
+	<script>  
+
+	<!-- Original:(suratha) and revised by Mufti (muftimail@gmail.com) -->    
+   
+		function convert_to_utf()
+		{
+			var convval=document.getElementById('convert').options[document.getElementById('convert').selectedIndex].value
+				, ip = document.getElementById('ip')
+				, convstr=''
+				, convstr1=''
+				, op1 = document.getElementById('op1')
+				, op2 = document.getElementById('op2')
+				
+				//console.log(ip.value, op1.value, op2.value)
+			if(convval=='')
+			{
+				alert('Please select what you want to convert');		
+			}
+			else
+			{
+				op1.value='', op2.value='';
+				switch(convval)
+				{
+					case 	'bamini2unicode':
+							convstr= bamini2unicode(ip.value);
+							break;
+					case	'kavi2unicode':
+							convstr= kavi2unicode(ip.value);
+							break;
+					case	'english2tamil':
+							convstr = tanglish(ip.value);
+							convstr1 = unicode2bamini(convstr);
+							op2.value = convstr1;
+							
+							break;
+					case	't_serial_unicode':
+							convstr = t_serial_unicode(ip.value);
+							break;
+					case	'unicode2bamini':
+							convstr = unicode2bamini(ip.value);
+							break;
+					case	'invert_comma_correction':
+							convstr = invert_comma_correction(ip.value);
+							break;
+				}
+				console.log(convstr);
+				op1.value = convstr;				
+			}
+		}
+	</script>
+	<script src="tamilconverter.js"></script>
+  
+<div id="container" class="container">
+	  <label for="ip">Type in English</label>
+      <TEXTAREA  style="FONT-SIZE: 12px; WIDTH: 100%; size: " id="ip"  rows=10 wrap=physical cols=100  2? WIDTH: 100%;  onkeyup="convert_to_utf()" onclick="convert_to_utf()" onselect="convert_to_utf()"></TEXTAREA> 
+		
+		<BR/><BR/>
+		
+
+    <button id="startRecognition" class="button"><span>Start Listening</span></button>. &nbsp;&nbsp; <button id="stopRecognition" class="button"><span>Stop</span></button>
+    <label for="op1">தமிழ் எழுத்து</label>
+		<TEXTAREA style="FONT-SIZE: 12px; WIDTH: 100%; size: " rows=10 wrap=physical cols=100  2? WIDTH: 100%; id="op1" rows=1 wrap=physical cols=100> </TEXTAREA> 	   
+
+	<BR/><BR/>
+	<label for="op2">Bamini - Copy this in word document with Mezan or Bamini font</label>
+	
+	<TEXTAREA style="FONT-SIZE: 12px; WIDTH: 100%; size: " name=box1 rows=10 wrap=physical cols=100  2? WIDTH: 100%; id="op2" rows=1 wrap=physical cols=100 readonly="true"></TEXTAREA> 	  
+
+	<P align=center style="margin-top: 0; margin-bottom: 0">
+		<P align=center style="margin-top: 0; margin-bottom: 0">
+			<SPAN><FONT color=#92B6DA face="Verdana" style="font-size: 9pt"><font color="#92B6DA">
+			<a target="_blank" href="http://muftiblog.blogspot.com/">Improved by Mufti</a>
+			</font>&nbsp; </font>
+			</P>
+	</P>
+		
+	<P align=center style="margin-top: 0; margin-bottom: 0">&nbsp;</P>
+
+</div>
+
+
+<script>
+  try {
+        var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var recognition = new SpeechRecognition();
+      } catch (e) {
+        let recognition = Object;
+      }
+
+      recognition.continuous = true;
+      recognition.interimResults = false;
+      recognition.lang = 'ta';
+
+     recognition.onresult = function (event) {
+        var txtRec = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+          txtRec += event.results[i][0].transcript;
+        }
+        document.getElementById('op1').value += txtRec;
+      }
+
+      document.getElementById('startRecognition').addEventListener("click",
+          event => {
+        var ipTxtArea= document.getElementById('op1');
+        ipTxtArea.focus();
+        ipTxtArea.value ='';
+        recognition.start();
+        event.currentTarget.setAttribute('disabled','true');
+      }, false)
+
+      document.getElementById('stopRecognition').addEventListener("click",
+        event => {
+              recognition.stop();
+              document.getElementById('startRecognition').removeAttribute('disabled');
+        }, false);
+
+</script>
+
+
+</BODY>
+</HTML>
